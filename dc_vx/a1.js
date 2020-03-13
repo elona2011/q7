@@ -1,0 +1,1 @@
+var _g_vvv_mmm_xxx_ooo_ = 0;
