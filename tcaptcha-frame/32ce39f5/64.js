@@ -1,0 +1,3 @@
+function (e, t, i) {
+  (e.exports = i(6)(!1)).push([e.i, '.tcaptcha-container{border:1px solid #e5e5e5;position:absolute;left:0;top:0;z-index:2000000002}.tcaptcha-container:after,.tcaptcha-container:before{content:"";height:0;width:0;position:absolute;left:-17px;top:50%;margin-top:-9.5px;border-left:9px solid transparent;border-top:9px solid transparent;border-bottom:9px solid transparent;border-right:9px solid rgba(63,63,63,.1);z-index:0}.tcaptcha-container:after{border-right:9px solid #fff;z-index:1}.tcaptcha-container-iframe{display:block;width:100%;height:100%;border:0;background:#fff;visibility:visible}', ""]);
+}

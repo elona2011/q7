@@ -11,7 +11,8 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/re.js"
+            "args":["tcaptcha-frame/32ce39f5.js"],
+            "program": "${workspaceFolder}/re_webpack.js"
         }
     ]
 }
