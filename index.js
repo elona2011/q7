@@ -9,20 +9,17 @@ imgElement.onload = function () {
     let data = mat.data
 
     console.time();
-    for (let y = 50; y <= mat.rows - 89; y++) {
-        for (let x = 100; x <= mat.cols - 89; x++) {
+    
+    La:
+    for (let x = mat.cols - 10; x >= 100; x--) {
+        for (let y = mat.rows - 10; y >= 100; y--) {
             let i = y * mat.cols * 4 + x * 4
-            if (isWhite(mat, i) && loopVert(mat, 15, i) && loopHor(mat, 15, i)) {
-                let rd = nextRow(mat, i) + 4
-                if (rd && isBlack(mat, rd)) {
-                    let x = i / 4 % mat.cols
-                    let y = Math.floor(i / 4 / mat.cols)
-                    if (mat.cols - x < 89 || mat.rows - y < 89) continue
-                    // console.log(data[i].toString(16) + data[i + 1].toString(16) + data[i + 2].toString(16))
-                    // console.log(data[rd].toString(16) + data[rd + 1].toString(16) + data[rd + 2].toString(16))
-                    cv.rectangle(mat, new cv.Point(x, y), new cv.Point(x + 88, y + 88), new cv.Scalar(255, 0, 0, 255), 1);
-                    cv.imshow('canvasOutput', mat);
-                }
+            if (isWhite(mat, i) && isBlack(mat, preRow(mat, i) - 4) && loopVert(mat, 15, i) && loopHor(mat, 15, i)) {
+                let x = i / 4 % mat.cols
+                let y = Math.floor(i / 4 / mat.cols)
+                cv.rectangle(mat, new cv.Point(x - 88, y - 88), new cv.Point(x, y), new cv.Scalar(255, 0, 0, 255), 1);
+                cv.imshow('canvasOutput', mat);
+                break La
             }
         }
     }
@@ -53,11 +50,13 @@ function isBlack(mat, i) {
 function nextRow(mat, i) {
     return i + mat.cols * 4
 }
-
+function preRow(mat, i) {
+    return i - mat.cols * 4
+}
 function loopVert(mat, n, i) {
     let r = i
     for (let i = 0; i < n; i++) {
-        r = nextRow(mat, r)
+        r = preRow(mat, r)
         if (!isWhite(mat, r)) return false
     }
     return true
@@ -65,7 +64,7 @@ function loopVert(mat, n, i) {
 function loopHor(mat, n, i) {
     let r = i
     for (let i = 0; i < n; i++) {
-        r += 4
+        r -= 4
         if (!isWhite(mat, r)) return false
     }
     return true
