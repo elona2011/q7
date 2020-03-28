@@ -44,6 +44,7 @@ def request(flow):
         # flow.request.urlencoded_form["sess"]=''
         flow.request.urlencoded_form["fwidth"]=''
         flow.request.urlencoded_form["sid"]=''
+        flow.request.urlencoded_form["forcestyle"]=''
         flow.request.urlencoded_form["tcScale"]=''
         flow.request.urlencoded_form["rnd"]=''
         flow.request.urlencoded_form["TCapIframeLoadTime"]=''
