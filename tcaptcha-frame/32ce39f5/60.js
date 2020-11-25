@@ -16,7 +16,8 @@ function (e, t, i) {
       } catch (t) {}
 
       e.success && e.success.apply(null, Array.prototype.slice.call(arguments));
-    };
+    }; //   debugger
+
 
     var s = e.url,
         c = {};
